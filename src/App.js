@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './index.css'; // Import the CSS file
 
 // Base URL for the backend API
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://khichuri-backend-api.onrender.com/api';
 
 // Product data (বাংলায় নাম ও বিবরণ)
 // This will be fetched from backend, but keeping a local copy for fallback/structure idea
