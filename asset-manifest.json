@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/khichuri-user-frontend/static/css/main.2f5eb90e.css",
+    "main.js": "/khichuri-user-frontend/static/js/main.d2f07461.js",
+    "index.html": "/khichuri-user-frontend/index.html",
+    "main.2f5eb90e.css.map": "/khichuri-user-frontend/static/css/main.2f5eb90e.css.map",
+    "main.d2f07461.js.map": "/khichuri-user-frontend/static/js/main.d2f07461.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f5eb90e.css",
+    "static/js/main.d2f07461.js"
+  ]
+}
