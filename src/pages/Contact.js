@@ -16,12 +16,35 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here
-        console.log('Form submitted:', formData);
-        setSuccess(true);
-        setFormData({ name: '', email: '', message: '' });
+        
+        try {
+            const response = await fetch('https://khichuri-backend-api.onrender.com/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+                console.log('Message sent successfully:', formData);
+                setSuccess(true);
+                setFormData({ name: '', email: '', message: '' });
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 5000);
+            } else {
+                console.error('Failed to send message');
+                alert('মেসেজ পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            alert('মেসেজ পাঠাতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+        }
     };
 
     return (
