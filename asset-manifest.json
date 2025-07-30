@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/khichuri-user-frontend/static/css/main.4ca45d68.css",
-    "main.js": "/khichuri-user-frontend/static/js/main.07ce0345.js",
+    "main.css": "/khichuri-user-frontend/static/css/main.6be09ebe.css",
+    "main.js": "/khichuri-user-frontend/static/js/main.603c5a8b.js",
     "index.html": "/khichuri-user-frontend/index.html",
-    "main.4ca45d68.css.map": "/khichuri-user-frontend/static/css/main.4ca45d68.css.map",
-    "main.07ce0345.js.map": "/khichuri-user-frontend/static/js/main.07ce0345.js.map"
+    "main.6be09ebe.css.map": "/khichuri-user-frontend/static/css/main.6be09ebe.css.map",
+    "main.603c5a8b.js.map": "/khichuri-user-frontend/static/js/main.603c5a8b.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ca45d68.css",
-    "static/js/main.07ce0345.js"
+    "static/css/main.6be09ebe.css",
+    "static/js/main.603c5a8b.js"
   ]
 }
