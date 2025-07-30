@@ -297,7 +297,7 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                         />
                       </div>
                       <span className="block mt-1 text-sm text-gray-500">
-                        বিকাশ নম্বর: ০১২৩৪৫৬৭৮৯(পারসোনাল)
+                        বিকাশ নম্বর: ০১২৩৪৫৬৭৮৯(পার্সোনাল)
                       </span>
                       {form.payment === "bkash" && (
                         <div className="p-3 mt-2 border border-yellow-200 rounded-md bg-yellow-50">
@@ -340,7 +340,7 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                         />
                       </div>
                       <span className="block mt-1 text-sm text-gray-500">
-                        নগদ নম্বর: ০১২৩৪৫৬৭৮৯ (পারসোনাল)
+                        নগদ নম্বর: ০১২৩৪৫৬৭৮৯ (পার্সোনাল)
                       </span>
                       {form.payment === "nagad" && (
                         <div className="p-3 mt-2 border border-yellow-200 rounded-md bg-yellow-50">
