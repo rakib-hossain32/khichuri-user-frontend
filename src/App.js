@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import "./index.css";
 
@@ -91,6 +91,7 @@ const App = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
 
   // Show notification message
   const showCustomMessage = useCallback((message, type = "info") => {
@@ -422,8 +423,8 @@ const App = () => {
         </Routes>
       </main>
 
-      {/* Modern Footer */}
-      <Footer />
+      {/* Modern Footer - Only show on home page */}
+      {location.pathname === "/" && <Footer />}
 
       {/* Modern Cart Modal */}
       <CartModal

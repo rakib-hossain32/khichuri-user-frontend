@@ -81,7 +81,7 @@ const Footer = () => {
                         </div>
                         <div>
                             <p className="font-semibold text-white">ফোন</p>
-                            <p>+880 1234-567890</p>
+                            <p>+৮৮০১২৩৪৫৬৭৮৯</p>
                         </div>
                     </div>
 

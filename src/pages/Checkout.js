@@ -432,7 +432,7 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
               href="tel:+০১২৩৪৫৬৭৮৯ "
               className="text-green-600 hover:underline"
             >
-              +88০১২৩৪৫৬৭৮৯
+              +৮৮০১২৩৪৫৬৭৮৯
             </a>
           </p>
         </div>
