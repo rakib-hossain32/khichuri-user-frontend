@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const OrderConfirmation = () => {
   const navigate = useNavigate();
@@ -13,7 +14,12 @@ const OrderConfirmation = () => {
 
   if (!orderDetails) {
     return (
-      <div className="flex items-center justify-center min-h-screen px-4 bg-gray-50">
+      <motion.div
+        className="flex items-center justify-center min-h-screen px-4 bg-gray-50"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="w-full max-w-md p-8 text-center bg-white shadow-lg rounded-xl">
           <h2 className="mb-4 text-2xl font-bold text-gray-800">অর্ডার বিবরণ পাওয়া যায়নি</h2>
           <p className="mb-6 text-gray-600">দুঃখিত, আমরা আপনার অর্ডার বিবরণ খুঁজে পাচ্ছি না।</p>
@@ -24,16 +30,26 @@ const OrderConfirmation = () => {
             হোমপেজে ফিরে যান
           </button>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
 
   return (
-    <div className="min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
+    <motion.div
+      className="min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8"
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="max-w-4xl mx-auto">
         {/* Order Confirmation Header */}
-        <div className="mb-12 text-center">
+        <motion.div
+          className="mb-12 text-center"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <div className="flex items-center justify-center w-16 h-16 mx-auto bg-green-100 rounded-full">
             <svg className="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -48,15 +64,20 @@ const OrderConfirmation = () => {
           <p className="mt-2 text-gray-500">
             আমরা আপনার অর্ডারটি পেয়েছি এবং প্রক্রিয়া করছি।
           </p>
-        </div>
+        </motion.div>
 
         {/* Order Summary */}
-        <div className="mb-8 overflow-hidden bg-white shadow sm:rounded-lg">
+        <motion.div
+          className="mb-8 overflow-hidden bg-white shadow sm:rounded-lg"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <div className="px-4 py-5 border-b border-gray-200 sm:px-6 bg-gray-50">
             <h3 className="flex items-center text-lg font-medium leading-6 text-gray-900">
               <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
               অর্ডার সংক্ষেপ
             </h3>
           </div>
@@ -136,10 +157,15 @@ const OrderConfirmation = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Order Items */}
-        <div className="mb-8 overflow-hidden bg-white shadow sm:rounded-lg">
+        <motion.div
+          className="mb-8 overflow-hidden bg-white shadow sm:rounded-lg"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <div className="px-4 py-5 border-b border-gray-200 sm:px-6 bg-gray-50">
             <h3 className="text-lg font-medium leading-6 text-gray-900">
               অর্ডারকৃত আইটেম সমূহ
@@ -149,7 +175,13 @@ const OrderConfirmation = () => {
             <div className="flow-root">
               <ul className="divide-y divide-gray-200">
                 {orderDetails.items.map((item, index) => (
-                  <li key={index} className="py-4">
+                  <motion.li
+                    key={index}
+                    className="py-4"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                  >
                     <div className="flex items-center">
                       <div className="flex-shrink-0 w-16 h-16 overflow-hidden bg-gray-200 rounded-md">
                         <img
@@ -170,7 +202,7 @@ const OrderConfirmation = () => {
                         </div>
                       </div>
                     </div>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
@@ -184,10 +216,15 @@ const OrderConfirmation = () => {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Next Steps */}
-        <div className="mb-8 overflow-hidden bg-white shadow sm:rounded-lg">
+        <motion.div
+          className="mb-8 overflow-hidden bg-white shadow sm:rounded-lg"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
           <div className="px-4 py-5 border-b border-gray-200 sm:px-6 bg-gray-50">
             <h3 className="text-lg font-medium leading-6 text-gray-900">
               পরবর্তী ধাপসমূহ
@@ -230,10 +267,15 @@ const OrderConfirmation = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Call to Action */}
-        <div className="overflow-hidden bg-white shadow sm:rounded-lg">
+        <motion.div
+          className="overflow-hidden bg-white shadow sm:rounded-lg"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
           <div className="px-4 py-5 text-center sm:p-6">
             <h3 className="text-lg font-medium leading-6 text-gray-900">আরও সাহায্য প্রয়োজন?</h3>
             <div className="max-w-xl mt-2 text-sm text-gray-500">
@@ -247,35 +289,44 @@ const OrderConfirmation = () => {
                 <svg className="w-5 h-5 mr-2 -ml-1 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                কল করুন: +880 1712 345 678
+                কল করুন: +৮৮০১২৩৪৫৬৭৮৯০
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Navigation Buttons */}
-        <div className="flex flex-col gap-4 mt-8 sm:flex-row">
-          <button
+        <motion.div
+          className="flex flex-col gap-4 mt-8 sm:flex-row"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          <motion.button
             onClick={() => navigate('/menu')}
             className="flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <svg className="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
             আরও অর্ডার করুন
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             onClick={() => navigate('/')}
             className="flex items-center justify-center w-full px-6 py-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             <svg className="w-5 h-5 mr-2 -ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
             হোমপেজে ফিরে যান
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

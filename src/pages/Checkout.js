@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Checkout = ({ cart = [], total = 0, submitOrder }) => {
   // Ensure cart is always an array to prevent map errors
@@ -86,7 +87,12 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
 
   if (safeCart.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen px-4 bg-gray-50">
+      <motion.div
+        className="flex items-center justify-center min-h-screen px-4 bg-gray-50"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="w-full max-w-md p-8 text-center bg-white shadow-lg rounded-xl">
           <div className="mb-4 text-6xl text-gray-300">
             <i className="fas fa-shopping-cart"></i>
@@ -104,23 +110,38 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
             <i className="mr-2 fas fa-home"></i> হোমপেজে যান
           </button>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
+    <motion.div
+      className="min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8"
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="max-w-4xl mx-auto">
-        <div className="mb-10 text-center">
+        <motion.div
+          className="mb-10 text-center"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
             <span className="block">অর্ডার সম্পূর্ণ করুন</span>
             <span className="block mt-2 text-xl text-green-600">
               আপনার পছন্দের খাবারটি আপনার দরজায়
             </span>
           </h1>
-        </div>
+        </motion.div>
 
-        <div className="overflow-hidden bg-white rounded-lg shadow-xl">
+        <motion.div
+          className="overflow-hidden bg-white rounded-lg shadow-xl"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <div className="p-6 sm:p-8">
             <div className="mt-6">
               <h3 className="mb-4 text-lg font-medium text-gray-900">
@@ -133,9 +154,12 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                   </div>
                 ) : (
                   safeCart.map((item, index) => (
-                    <div
+                    <motion.div
                       key={index}
                       className="flex items-center justify-between p-4 border-b border-gray-100"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
                     >
                       <div className="flex items-center">
                         <img
@@ -158,14 +182,18 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                       <span className="font-medium">
                         ৳{(item.price * item.quantity).toFixed(2)}
                       </span>
-                    </div>
+                    </motion.div>
                   ))
                 )}
               </div>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
                 <h2 className="pb-2 mt-8 mb-4 text-xl font-bold text-gray-800 border-b-2 border-green-100">
                   <i className="mr-2 text-green-500 fas fa-truck"></i> ডেলিভারি
                   তথ্য
@@ -250,9 +278,14 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                     ></textarea>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="pt-4 border-t border-gray-200">
+              <motion.div
+                className="pt-4 border-t border-gray-200"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
                 <h3 className="mb-4 text-lg font-semibold text-gray-800">
                   পেমেন্ট পদ্ধতি
                 </h3>
@@ -363,10 +396,12 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                   </label>
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitting}
                   className="flex items-center justify-center w-full px-6 py-4 font-bold text-white transition duration-300 bg-green-500 rounded-lg hover:bg-green-600"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   {isSubmitting ? (
                     <>
@@ -390,7 +425,7 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         ></path>
                       </svg>
-                      অর্ডার দেওয়া হচ্ছে...
+                      অর্ডার দেওয়া হচ্ছে...
                     </>
                   ) : (
                     <>
@@ -398,16 +433,18 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                       নিশ্চিত করুন
                     </>
                   )}
-                </button>
+                </motion.button>
 
                 {/* Cancel / Go Back Button */}
-                <button
+                <motion.button
                   type="button"
                   onClick={() => navigate(-1)}
                   className="flex items-center justify-center w-full px-6 py-3 mt-3 font-bold text-gray-700 transition duration-300 bg-gray-200 rounded-lg hover:bg-gray-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <i className="mr-2 fas fa-arrow-left"></i> পরে অর্ডার করবেন
-                </button>
+                </motion.button>
 
                 <p className="mt-3 text-sm text-center text-gray-500">
                   অর্ডার দিয়ে আপনি আমাদের{" "}
@@ -420,12 +457,17 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
                   </a>{" "}
                   মেনে নিচ্ছেন
                 </p>
-              </div>
+              </motion.div>
             </form>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="mt-8 text-sm text-center text-gray-500">
+        <motion.div
+          className="mt-8 text-sm text-center text-gray-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
           <p>
             কোনো সমস্যায় কল করুন:{" "}
             <a
@@ -435,9 +477,9 @@ const Checkout = ({ cart = [], total = 0, submitOrder }) => {
               +৮৮০১২৩৪৫৬৭৮৯
             </a>
           </p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

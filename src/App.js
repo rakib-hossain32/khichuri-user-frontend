@@ -358,69 +358,79 @@ const App = () => {
 
       {/* Modern Main Content */}
       <main className="flex-grow relative z-content">
-        <Routes>
-          <Route
-            path="/"
-            element={<Home products={products} addToCart={addToCart} />}
-          />
-
-          <Route
-            path="/menu"
-            element={
-              <Menu products={products} addToCart={addToCart} showBack />
-            }
-          />
-
-          <Route
-            path="/product/:id"
-            element={
-              <ProductDetails
-                addToCart={addToCart}
-                products={products}
-                submitReview={submitReview}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <Routes>
+              <Route
+                path="/"
+                element={<Home products={products} addToCart={addToCart} />}
               />
-            }
-          />
 
-          <Route path="/about" element={<About />} />
-
-          <Route
-            path="/checkout"
-            element={
-              <Checkout
-                cart={cart}
-                total={calculateCartTotal()}
-                submitOrder={handleOrderSubmit}
+              <Route
+                path="/menu"
+                element={
+                  <Menu products={products} addToCart={addToCart} showBack />
+                }
               />
-            }
-          />
-          <Route path="/order-confirmation" element={<OrderConfirmation />} />
-          <Route
-            path="/contact"
-            element={<Contact onSubmit={handleContactSubmit} />}
-          />
 
-          {/* 404 Page */}
-          <Route
-            path="*"
-            element={
-              <div className="container mx-auto px-4 py-16 text-center">
-                <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                  Page Not Found
-                </h1>
-                <p className="text-xl text-gray-600 mb-8">
-                  The page you're looking for doesn't exist.
-                </p>
-                <button
-                  onClick={() => navigate("/")}
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-                >
-                  Back to Home
-                </button>
-              </div>
-            }
-          />
-        </Routes>
+              <Route
+                path="/product/:id"
+                element={
+                  <ProductDetails
+                    addToCart={addToCart}
+                    products={products}
+                    submitReview={submitReview}
+                  />
+                }
+              />
+
+              <Route path="/about" element={<About />} />
+
+              <Route
+                path="/checkout"
+                element={
+                  <Checkout
+                    cart={cart}
+                    total={calculateCartTotal()}
+                    submitOrder={handleOrderSubmit}
+                  />
+                }
+              />
+              <Route path="/order-confirmation" element={<OrderConfirmation />} />
+              <Route
+                path="/contact"
+                element={<Contact onSubmit={handleContactSubmit} />}
+              />
+
+              {/* 404 Page */}
+              <Route
+                path="*"
+                element={
+                  <div className="container mx-auto px-4 py-16 text-center">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                      Page Not Found
+                    </h1>
+                    <p className="text-xl text-gray-600 mb-8">
+                      The page you're looking for doesn't exist.
+                    </p>
+                    <button
+                      onClick={() => navigate("/")}
+                      className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+                    >
+                      Back to Home
+                    </button>
+                  </div>
+                }
+              />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Modern Footer - Only show on home page */}
@@ -444,23 +454,21 @@ const App = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className={`notification-modern p-6 rounded-2xl shadow-2xl backdrop-blur-md border border-white/20 ${
-            notificationType === "error"
+          className={`notification-modern p-6 rounded-2xl shadow-2xl backdrop-blur-md border border-white/20 ${notificationType === "error"
               ? "bg-gradient-to-r from-red-500 to-red-600"
               : notificationType === "success"
-              ? "bg-gradient-to-r from-green-500 to-green-600"
-              : "bg-gradient-to-r from-blue-500 to-blue-600"
-          } text-white font-semibold`}
+                ? "bg-gradient-to-r from-green-500 to-green-600"
+                : "bg-gradient-to-r from-blue-500 to-blue-600"
+            } text-white font-semibold`}
         >
           <div className="flex items-center">
             <i
-              className={`fas ${
-                notificationType === "error"
+              className={`fas ${notificationType === "error"
                   ? "fa-exclamation-triangle"
                   : notificationType === "success"
-                  ? "fa-check-circle"
-                  : "fa-info-circle"
-              } mr-3 text-xl`}
+                    ? "fa-check-circle"
+                    : "fa-info-circle"
+                } mr-3 text-xl`}
             ></i>
             <span>{notification}</span>
           </div>

@@ -48,19 +48,19 @@ const MenuCard = ({ product, addToCart, active = false }) => {
         className="block relative overflow-hidden group"
       >
         <div className="relative overflow-hidden">
-        <img
-          src={
-            product.image ||
-            "https://placehold.co/600x400/6B8E23/FFFFFF?text=Khichuri"
-          }
-          alt={product.name}
+          <img
+            src={
+              product.image ||
+              "https://placehold.co/600x400/6B8E23/FFFFFF?text=Khichuri"
+            }
+            alt={product.name}
             className="w-full h-64 object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1 img-modern"
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src =
-              "https://placehold.co/600x400/6B8E23/FFFFFF?text=Khichuri";
-          }}
-        />
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src =
+                "https://placehold.co/600x400/6B8E23/FFFFFF?text=Khichuri";
+            }}
+          />
 
           {/* Modern Image Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -89,15 +89,15 @@ const MenuCard = ({ product, addToCart, active = false }) => {
             aria-label={`রেটিং ${product.rating} স্টার`}
           >
             <div className="flex items-center">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <i
-                key={i}
+              {[1, 2, 3, 4, 5].map((i) => (
+                <i
+                  key={i}
                   className={`fas fa-star ${i <= Math.round(product.rating)
                     ? "text-yellow-500"
                     : "text-gray-200"
                     } text-lg transition-colors duration-300 hover:scale-110`}
-              ></i>
-            ))}
+                ></i>
+              ))}
             </div>
             <span className="ml-2 text-sm font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
               ({product.rating.toFixed(1)})
@@ -114,20 +114,20 @@ const MenuCard = ({ product, addToCart, active = false }) => {
         <div className="flex justify-between items-center pt-4 border-t border-gray-100/80">
           {/* Modern Price Display */}
           <div className="flex flex-col">
-          {product.discount > 0 ? (
+            {product.discount > 0 ? (
               <>
-              <span className="text-base font-medium text-gray-400 line-through">
+                <span className="text-base font-medium text-gray-400 line-through">
+                  ৳{product.price}
+                </span>
+                <span className="text-2xl font-extrabold text-gradient mt-0.5">
+                  ৳{(product.price * (1 - product.discount / 100)).toFixed(2)}
+                </span>
+              </>
+            ) : (
+              <span className="text-2xl font-extrabold text-gradient">
                 ৳{product.price}
               </span>
-                <span className="text-2xl font-extrabold text-gradient mt-0.5">
-                ৳{(product.price * (1 - product.discount / 100)).toFixed(2)}
-              </span>
-              </>
-          ) : (
-              <span className="text-2xl font-extrabold text-gradient">
-              ৳{product.price}
-            </span>
-          )}
+            )}
           </div>
 
           {/* Modern Add to Cart Button */}
