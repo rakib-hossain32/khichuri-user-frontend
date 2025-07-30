@@ -121,7 +121,7 @@ const App = () => {
         return [...prevCart, { ...product, quantity }];
       });
 
-      showCustomMessage("পণ্যটি কার্টে যোগ হয়েছে", "success");
+      showCustomMessage("পণ্যটি কার্ডে যোগ হয়েছে", "success");
     },
     [products, showCustomMessage]
   );
@@ -443,18 +443,24 @@ const App = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.8 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className={`notification-modern p-6 rounded-2xl shadow-2xl backdrop-blur-md border border-white/20 ${notificationType === "error"
-            ? "bg-gradient-to-r from-red-500 to-red-600"
-            : notificationType === "success"
+          className={`notification-modern p-6 rounded-2xl shadow-2xl backdrop-blur-md border border-white/20 ${
+            notificationType === "error"
+              ? "bg-gradient-to-r from-red-500 to-red-600"
+              : notificationType === "success"
               ? "bg-gradient-to-r from-green-500 to-green-600"
               : "bg-gradient-to-r from-blue-500 to-blue-600"
-            } text-white font-semibold`}
+          } text-white font-semibold`}
         >
           <div className="flex items-center">
-            <i className={`fas ${notificationType === "error" ? "fa-exclamation-triangle" :
-              notificationType === "success" ? "fa-check-circle" :
-                "fa-info-circle"
-              } mr-3 text-xl`}></i>
+            <i
+              className={`fas ${
+                notificationType === "error"
+                  ? "fa-exclamation-triangle"
+                  : notificationType === "success"
+                  ? "fa-check-circle"
+                  : "fa-info-circle"
+              } mr-3 text-xl`}
+            ></i>
             <span>{notification}</span>
           </div>
         </motion.div>
