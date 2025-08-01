@@ -2,7 +2,7 @@
   "name": "khichuri-user-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://rakib-hossain32.github.io/khichuri-user-frontend/",
+  "homepage": "https://rakib-hossain32.github.io/khichurighorbd/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
